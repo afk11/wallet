@@ -2,12 +2,12 @@
 
 require "vendor/autoload.php";
 
+
 use BitWasp\Buffertools\Buffer;
 use BitWasp\Bitcoin\Block\BlockFactory;
 use BitWasp\Bitcoin\Block\BlockHeader;
 $loop = \React\EventLoop\Factory::create();
-$pdo = new \PDO('mysql:host=127.0.0.1;dbname=utxo', 'root', 'sugarpop101');
-
+$pdo = new \PDO('mysql:host=127.0.0.1;dbname=' . getenv('WALLET_DB_NAME'), getenv('WALLET_DB_USER'), getenv('WALLET_DB_PASS'));
 
 $genesis = new BlockHeader(
     1,
